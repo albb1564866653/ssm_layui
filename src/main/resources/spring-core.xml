@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+	<!-- 加载db.properties文件 -->
+	<bean id="properties" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:db.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	
+	<!-- 第一步：数据源 -->
+	<!-- 配置数据库信息（替代Mybatis配置文件：conf.xml） -->
+	<bean id="pooledDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		 <property name="driverClass" value="${driverClassName}"/>
+		 <property name="jdbcUrl" value="${url}"/>
+		 <property name="user" value="${username}"/>
+		 <property name="password" value="${password}"/>
+	</bean>
+	
+	<!-- 第二步：mapper.xml -->
+	
+	<!-- 在springioc容器中创建Mybatis的核心类 SqlSessionFacotry  -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="pooledDataSource"/>
+		<!-- 加载Mybatis配置文件conf.xml -->
+		<property name="configLocation" value="classpath:conf.xml"/>
+		<!-- 加载mapper.xml路径 -->
+		<property name="mapperLocations" value="classpath:mappers/*.xml"></property>
+	</bean>
+	
+	<!-- 第三种方式生成mapper对象
+		批量产生mapper对象在springioc的id值 默认就是接口名（接口名首字母必须小写）
+	 -->
+	 <!-- 将Mybatis的sqlSessionFactory交给spring -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+		<!-- 指定批量产生 哪个包中的mapper对象 -->
+		<property name="basePackage" value="com.cjh.dao"></property>
+	</bean>
+	
+	<!-- 文件上传 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+			<property name="defaultEncoding" value="UTF-8"></property>
+			<!-- 上传单个文件的最大值，单位Byte;如果-1，表示无限制 -->
+			<property name="maxUploadSize"  value="102400"></property>
+	</bean>
+
+	
+</beans>

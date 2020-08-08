@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cjh.dao.EmpMapper">
+    <select id="selectAll" resultType="Emp">
+			select
+			*
+			from
+			tbl_emp
+	</select>
+
+	<update id="updateEmp" parameterType="Emp">
+		update
+		tbl_emp
+		set
+		emp_name=#{empName},
+		gender=#{gender},
+		email=#{email},
+		d_id=#{dId}
+		where
+		emp_id=#{empId}
+	</update>
+
+	<insert id="addEmp" parameterType="Emp">
+		insert
+		into
+		tbl_emp
+		values
+		(#{empId},#{empName},#{gender},#{email},#{dId})
+	</insert>
+
+	<delete id="deleteEmp" parameterType="Integer">
+		delete
+		from
+		tbl_emp
+		where
+		emp_id=#{emp_id}
+	</delete>
+
+	<delete id="batchDeletion" parameterType="list">
+		delete
+		from
+		tbl_emp
+		<where>
+			<if test="list!=null and list.size>0">
+				<foreach collection="list" open=" emp_id in(" item="temp" separator="," close=")">
+					#{temp}
+				</foreach>
+			</if>
+		</where>
+	</delete>
+
+</mapper>
