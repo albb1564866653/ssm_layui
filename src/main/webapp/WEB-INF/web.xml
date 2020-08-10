@@ -5,6 +5,10 @@
          id="WebApp_ID" version="3.0">
   <display-name>Archetype Created Web Application</display-name>
 
+  <welcome-file-list>
+    <welcome-file>/login.html</welcome-file>
+  </welcome-file-list>
+  
   <!-- 第一步：web项目中 引入spring -->
   <!-- needed for ContextLoaderListener -->
   <context-param>

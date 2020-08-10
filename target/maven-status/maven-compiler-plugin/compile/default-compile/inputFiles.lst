@@ -5,5 +5,6 @@ C:\Users\Administrator\IdeaProjects\ssm-crud\src\main\java\com\cjh\entity\Admin.
 C:\Users\Administrator\IdeaProjects\ssm-crud\src\main\java\com\cjh\dao\EmpMapper.java
 C:\Users\Administrator\IdeaProjects\ssm-crud\src\main\java\com\cjh\service\impl\EmpServiceImpl.java
 C:\Users\Administrator\IdeaProjects\ssm-crud\src\main\java\com\cjh\utils\ResultMap.java
+C:\Users\Administrator\IdeaProjects\ssm-crud\src\main\java\com\cjh\controller\Interceptor.java
 C:\Users\Administrator\IdeaProjects\ssm-crud\src\main\java\com\cjh\controller\AdminController.java
 C:\Users\Administrator\IdeaProjects\ssm-crud\src\main\java\com\cjh\controller\EmpController.java
