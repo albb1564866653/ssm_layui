@@ -11,13 +11,22 @@ import javax.servlet.http.HttpSession;
 public class Interceptor {
 
     @PostMapping("/check")
-    public String check(HttpSession session){
+    public String check(HttpSession session) {
         String admin_username = (String) session.getAttribute("admin_username");
-        System.out.println("拦截请求......（判断session是否为空：）."+admin_username);
-        if(admin_username==null){
-            return "NULL";
-        }else{
-            return admin_username;
-        }
+        System.out.println("拦截请求......（判断session是否为空：）." + admin_username);
+        
+        return "NULL";
     }
+
+
+//    @PostMapping("/check")
+//    public String check(HttpSession session){
+//        String admin_username = (String) session.getAttribute("admin_username");
+//        System.out.println("拦截请求......（判断session是否为空：）."+admin_username);
+//        if(admin_username==null){
+//            return "NULL";
+//        }else{
+//            return admin_username;
+//        }
+//    }
 }

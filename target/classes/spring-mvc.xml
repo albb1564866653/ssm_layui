@@ -32,5 +32,14 @@
 		<property name="maxUploadSize" value="104857600"></property>
 	</bean>
 
-
+	<mvc:interceptors>
+		<!-- 		<bean class="org.ny.intercetor.MyIntercetor"></bean> -->
+		<!-- 配置具体的拦截路径 -->
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/><!-- 拦截的路径 -->
+			<mvc:exclude-mapping path="/login.html"/> <!--不拦截的路径 -->
+			<mvc:exclude-mapping path="/admin/login"/>
+			<bean class="com.cjh.utils.MyInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
 </beans>

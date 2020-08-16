@@ -8,11 +8,11 @@ layui.use([ 'element', 'jquery','form','layer','table','laydate'], function() {
 
     //模拟登陆拦截器
     $(function () {
-        $.post("admin/check",function (res) {
-            if (res=="NULL"){
-                location.href = 'login.html'; //后台主页
-            }
-        })
+        // $.post("admin/check",function (res) {
+        //     if (res=="NULL"){
+        //         location.href = 'login.html'; //登录
+        //     }
+        // })
     })
 
     $('#logOut_btn').click(function () {
