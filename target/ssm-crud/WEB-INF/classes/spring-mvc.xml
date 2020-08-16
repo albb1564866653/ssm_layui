@@ -33,7 +33,6 @@
 	</bean>
 
 	<mvc:interceptors>
-		<!-- 		<bean class="org.ny.intercetor.MyIntercetor"></bean> -->
 		<!-- 配置具体的拦截路径 -->
 		<mvc:interceptor>
 			<mvc:mapping path="/**"/><!-- 拦截的路径 -->

@@ -6,10 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4a69b302-d4fc-4f56-80fa-2d3e876a2c65" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/target/ssm-crud.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm-crud.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ssm-crud/META-INF/MANIFEST.MF" beforeDir="false" />
-    </list>
+    <list default="true" id="4a69b302-d4fc-4f56-80fa-2d3e876a2c65" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +190,8 @@
       <workItem from="1597064754300" duration="7000" />
       <workItem from="1597319392748" duration="475000" />
       <workItem from="1597408359465" duration="124000" />
-      <workItem from="1597518281346" duration="3201000" />
+      <workItem from="1597518281346" duration="3279000" />
+      <workItem from="1597554912748" duration="5050000" />
     </task>
     <task id="LOCAL-00001" summary="first upload...">
       <created>1596865437248</created>
@@ -223,7 +221,21 @@
       <option name="project" value="LOCAL" />
       <updated>1597520436201</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="update....">
+      <created>1597521504361</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1597521504362</updated>
+    </task>
+    <task id="LOCAL-00006" summary="update....">
+      <created>1597560720389</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1597560720389</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
