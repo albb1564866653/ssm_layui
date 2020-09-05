@@ -5,17 +5,19 @@ public class Emp {
     private String empName;
     private char gender;
     private String email;
-    private Integer dId;
+    private Integer deptId;
+    private String deptName;
 
     public Emp() {
     }
 
-    public Emp(Integer empId, String empName, char gender, String email, Integer dId) {
+    public Emp(Integer empId, String empName, char gender, String email, Integer deptId, String deptName) {
         this.empId = empId;
         this.empName = empName;
         this.gender = gender;
         this.email = email;
-        this.dId = dId;
+        this.deptId = deptId;
+        this.deptName = deptName;
     }
 
     public Integer getEmpId() {
@@ -50,12 +52,20 @@ public class Emp {
         this.email = email;
     }
 
-    public Integer getdId() {
-        return dId;
+    public Integer getDeptId() {
+        return deptId;
     }
 
-    public void setdId(Integer dId) {
-        this.dId = dId;
+    public void setDeptId(Integer deptId) {
+        this.deptId = deptId;
+    }
+
+    public String getDeptName() {
+        return deptName;
+    }
+
+    public void setDeptName(String deptName) {
+        this.deptName = deptName;
     }
 
     @Override
@@ -65,7 +75,8 @@ public class Emp {
                 ", empName='" + empName + '\'' +
                 ", gender=" + gender +
                 ", email='" + email + '\'' +
-                ", dId=" + dId +
+                ", deptId=" + deptId +
+                ", deptName='" + deptName + '\'' +
                 '}';
     }
 }

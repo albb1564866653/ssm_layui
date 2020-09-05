@@ -40,13 +40,13 @@
                     <label class="layui-icon layui-icon-password"></label>
                     <input type="password" name="passWord" lay-verify="required" placeholder="密码" autocomplete="off" class="layui-input">
                 </div>
-<!--                <div class="layui-form-item">-->
-<!--                    <label class="layui-icon layui-icon-vercode"></label>-->
-<!--                    <input type="text" lay-verify="required" placeholder="图形验证码" autocomplete="off" class="layui-input verification captcha">-->
-<!--                    <div class="captcha-img">-->
-<!--                        <img id="captchaPic" src="../images/captcha.jpg">-->
-<!--                    </div>-->
-<!--                </div>-->
+                <div class="layui-form-item">
+                    <label class="layui-icon layui-icon-vercode"></label>
+                    <input type="text" name="code" lay-verify="required" placeholder="图形验证码" autocomplete="off" class="layui-input verification captcha">
+                    <div class="captcha-img">
+                        <a href="#" title="换一张"><img id="captchaPic" src="validcode" mytarget="netxtcode"></a>
+                    </div>
+                </div>
                 <div class="layui-form-item">
                     <input type="checkbox" name="rememberMe" value="true" lay-skin="primary" title="记住密码">
                 </div>
@@ -62,6 +62,15 @@
 <script src="layui/layui.js"></script>
 <script src="layui/jquery.particleground.min.js"></script>
 <script>
+    $(function () {
+        $("[mytarget='netxtcode']").click(function () {
+            //浏览器带有缓存功能,不会多次请求相同数据
+            $("#captchaPic").attr("src", "validcode?date=" + new Date());
+            return false;
+
+        })
+    })
+
     layui.use(['form','layer','table'], function(){
         var form = layui.form,
             layer= layui.layer,
@@ -91,8 +100,16 @@
                     }, function(){
                         location.href = 'index.html'; //后台主页
                     });
-                }else{
-                    layer.msg('用户名密码错了',{
+                }else if(res.msg=='USER_ERROR'){
+                    layer.msg('用户名错了',{
+                        icon: 2
+                    });
+                }else if(res.msg=='PASSWORD_ERROR'){
+                    layer.msg('密码错了',{
+                        icon: 2
+                    });
+                }else if(res.msg=='CODE_ERROR'){
+                    layer.msg('验证码错了',{
                         icon: 2
                     });
                 }

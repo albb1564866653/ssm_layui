@@ -4,11 +4,26 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.cjh.dao.EmpMapper">
-    <select id="selectAll" resultType="Emp">
-			select
-			*
-			from
-			tbl_emp
+
+	<resultMap id="Emp_Dept_Map" type="Emp">
+		<id property="empId" column="emp_id"></id>
+		<result property="empName" column="emp_name"></result>
+		<result property="gender" column="gender"></result>
+		<result property="email" column="email"></result>
+		<result property="deptId" column="dept_id"></result>
+		<result property="deptName" column="dept_name"></result>
+	</resultMap>
+
+    <select id="selectAll" resultMap="Emp_Dept_Map">
+			select emp_id,
+			emp_name,
+			gender,
+			email,
+			dept_id,
+			dept_name
+			from tbl_emp t1,
+			tbl_dept t2
+			where t1.d_id=t2.dept_id
 	</select>
 
 	<update id="updateEmp" parameterType="Emp">
@@ -18,7 +33,7 @@
 		emp_name=#{empName},
 		gender=#{gender},
 		email=#{email},
-		d_id=#{dId}
+		d_id=#{deptId}
 		where
 		emp_id=#{empId}
 	</update>
@@ -28,7 +43,7 @@
 		into
 		tbl_emp
 		values
-		(#{empId},#{empName},#{gender},#{email},#{dId})
+		(#{empId},#{empName},#{gender},#{email},#{deptId})
 	</insert>
 
 	<delete id="deleteEmp" parameterType="Integer">

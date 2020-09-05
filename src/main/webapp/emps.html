@@ -55,10 +55,17 @@
                     </div>
                 </div>
                 <div class="layui-inline">
-                    <label class="layui-form-label">部门编号：</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="dId" lay-verify="required" autocomplete="off" class="layui-input">
+                    <label class="layui-form-label">部门名称：</label>
+
+                    <div class="layui-input-block">
+                        <select name="deptId" lay-filter="bumen" lay-search="" lay-verify="required" id="depts">
+                            <option value=""></option>
+                        </select>
                     </div>
+<!--                    <div class="layui-input-inline">-->
+<!--                        <input type="hidden" name="deptId" autocomplete="off" class="layui-input">-->
+<!--                        <input type="text" name="deptName" lay-verify="required" autocomplete="off" class="layui-input">-->
+<!--                    </div>-->
                 </div>
 
             </div>

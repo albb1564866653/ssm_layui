@@ -51,7 +51,7 @@ layui.use([ 'element', 'jquery','form','layer','table','laydate'], function() {
             ,{field:'email', title:'邮箱',align: 'center' , templet: function(res){
                     return res.email
                 }}
-            ,{field:'dId', title:'部门编号',align: 'center'}
+            ,{field:'deptName', title:'部门名称',align: 'center'}
             ,{fixed: 'right', title:'操作', toolbar: '#userBar', width:220,align: 'center'}
         ]]
 
@@ -106,6 +106,9 @@ layui.use([ 'element', 'jquery','form','layer','table','laydate'], function() {
             success:function (index) {
                 //清空表单
                 $('#dataFrm')[0].reset();
+
+                makeSelect();
+
                 //进入添加页面 把url赋值地址
                 url="admin/addEmp";
             }
@@ -122,11 +125,44 @@ layui.use([ 'element', 'jquery','form','layer','table','laydate'], function() {
             area:['360px'],
             success:function (index) {
                 form.val("dataFrm",data);
+                console.log(data);
                 //进入编辑页面 把url赋值地址
                 url="admin/updateEmp";
             }
         })
 
+        makeSelect();
+
+
+    }
+
+    //处理下拉框数据
+    function makeSelect(){
+        $.post('admin/allDept',function (res) {
+            var depts=$('#depts');
+            // alert(depts.html())
+
+            var deptInfo=res.data;
+            console.log(deptInfo);
+
+            //遍历前先清空
+            depts.empty();
+            //遍历所有部门，渲染下拉框
+            $(deptInfo).each(function (index,element) {
+                // alert(element.deptId+"--"+element.deptName);
+
+                if(data.deptId==element.deptId){
+                    depts.append("<option selected='selected' value="+element.deptId+">"+element.deptName+"</option>");
+                }else{
+                    depts.append("<option value="+element.deptId+">"+element.deptName+"</option>");
+                }
+
+                console.log("下拉列表---------"+data);
+                form.render('select');
+                // alert(depts.html())
+            })
+
+        })
     }
 
     //保存

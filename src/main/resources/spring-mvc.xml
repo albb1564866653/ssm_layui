@@ -38,6 +38,7 @@
 			<mvc:mapping path="/**"/><!-- 拦截的路径 -->
 			<mvc:exclude-mapping path="/login.html"/> <!--不拦截的路径 -->
 			<mvc:exclude-mapping path="/admin/login"/>
+			<mvc:exclude-mapping path="/validcode"/>
 			<mvc:exclude-mapping path="/layui/**"/>
 			<bean class="com.cjh.utils.MyInterceptor"></bean>
 		</mvc:interceptor>

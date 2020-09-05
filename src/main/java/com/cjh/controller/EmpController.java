@@ -40,7 +40,7 @@ public class EmpController {
 
     @PostMapping("/updateEmp")
     public ResultMap updateEmp(Emp emp){
-
+        System.out.println("-----------------:"+emp);
         Integer result = empService.updateEmp(emp);
         if(result>0){
             return new ResultMap<String>(0,"修改员工信息","修改成功",result);
@@ -52,7 +52,7 @@ public class EmpController {
 
     @PostMapping("/addEmp")
     public ResultMap addEmp(Emp emp){
-
+        System.out.println("-------add----------:"+emp);
         Integer result = empService.addEmp(emp);
         if(result>0){
             return new ResultMap<String>(0,"新增员工","添加成功",result);
