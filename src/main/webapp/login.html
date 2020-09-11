@@ -100,12 +100,8 @@
                     }, function(){
                         location.href = 'index.html'; //后台主页
                     });
-                }else if(res.msg=='USER_ERROR'){
-                    layer.msg('用户名错了',{
-                        icon: 2
-                    });
-                }else if(res.msg=='PASSWORD_ERROR'){
-                    layer.msg('密码错了',{
+                }else if(res.msg=='ERROR'){
+                    layer.msg('用户名或密码错了',{
                         icon: 2
                     });
                 }else if(res.msg=='CODE_ERROR'){

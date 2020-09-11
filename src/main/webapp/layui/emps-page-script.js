@@ -115,6 +115,7 @@ layui.use([ 'element', 'jquery','form','layer','table','laydate'], function() {
         })
     }
 
+    var currentDeptId;
     //打开编辑页面
     function openUpdatePerson(data){
         $('#isReadonly').attr('readonly','readonly')
@@ -131,6 +132,8 @@ layui.use([ 'element', 'jquery','form','layer','table','laydate'], function() {
             }
         })
 
+        //将当前的部门id存起来
+        currentDeptId=data.deptId;
         makeSelect();
 
 
@@ -143,7 +146,7 @@ layui.use([ 'element', 'jquery','form','layer','table','laydate'], function() {
             // alert(depts.html())
 
             var deptInfo=res.data;
-            console.log(deptInfo);
+            console.log("res："+res);
 
             //遍历前先清空
             depts.empty();
@@ -151,13 +154,14 @@ layui.use([ 'element', 'jquery','form','layer','table','laydate'], function() {
             $(deptInfo).each(function (index,element) {
                 // alert(element.deptId+"--"+element.deptName);
 
-                if(data.deptId==element.deptId){
+                //如果当前部门的id==正在遍历的部门id，就给下拉增加selected属性
+                if(currentDeptId==element.deptId){
                     depts.append("<option selected='selected' value="+element.deptId+">"+element.deptName+"</option>");
                 }else{
                     depts.append("<option value="+element.deptId+">"+element.deptName+"</option>");
                 }
 
-                console.log("下拉列表---------"+data);
+                console.log("下拉列表---------"+deptInfo);
                 form.render('select');
                 // alert(depts.html())
             })
